@@ -25,12 +25,8 @@ options:
 output is sorted by datetime
     LONGDESC
     def search(term='')
-      puts term
-      query = options[:filename] ? "'#{}make_query(options[:filename])'" : term
-      command = "papertrail --min-time "
-      command << "'#{options[:min_days]} days ago' "
-      command << "#{options[:env]} '#{query}'| sort -k1M -k2n -k4"
-      puts command
+      query = options[:filename] ? make_query(options[:filename]) : term
+      command = "papertrail --min-time '#{options[:min_days]} days ago' #{options[:env]} '#{query}'| sort -k1M -k2n -k4"
       o, e, _ = Open3.capture3(command)
       STDOUT.puts Col.plain o
       STDERR.puts e
@@ -42,13 +38,10 @@ output is sorted by datetime
         File.open(filename) do |f|
           while line = f.gets
             query << line.chomp << ' OR '
-
           end
         end
         query.sub(/OR\s+\z/, '')
       end
-
     end
-
   end
 end
