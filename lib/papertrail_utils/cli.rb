@@ -29,7 +29,7 @@ output is sorted by datetime
       spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :pulse_2)
       spinner.auto_spin
       query = options[:filename] ? make_query(options[:filename]) : term
-      command = "papertrail --min-time '#{options[:min_days]} days ago' #{options[:env]} '#{query}'| sort -k1M -k2n -k4"
+      command = "papertrail --min-time '#{options[:min_days]} days ago' #{options[:env]} '#{query}'| sort -k7"
       o, e, _ = Open3.capture3(command)
       STDOUT.puts Col.plain o
       spinner.stop('Done')
