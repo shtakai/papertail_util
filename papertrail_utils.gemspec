@@ -33,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "thor", "~> 0.20"
-  spec.add_development_dependency "papertrail-cli"
+  spec.add_development_dependency 'papertrail-cli', '~> 0'
   spec.add_development_dependency "col", "~> 1.0"
 end
