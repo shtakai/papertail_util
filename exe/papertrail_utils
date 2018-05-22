@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require "papertrail_utils"
+
+PapertrailUtils::CLI.start
